@@ -1,0 +1,152 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             PROGRAM, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         MAIN
+    4 00000000 E59F0040        LDR              R0,VALUE    ;load value 0X40000
+                                                            004 to R0
+    5 00000004 E59F3040        LDR              R3,COUNT    ;load vlaue 0X40000
+                                                            000 to r3 act as a 
+                                                            counter
+    6 00000008 E5934000        LDR              R4,[R3]     ;load  content of R
+                                                            4 to R3
+    7 0000000C E5901000 
+                       LOOP    LDR              R1,[R0]     ;load content of R0
+                                                             to R1
+    8 00000010 E3510000        CMP              R1,#0       ;compare the value 
+                                                            of R1 to check the 
+                                                            no equal to 0 if it
+                                                             is 0 it set 0 flag
+                                                             to high
+    9 00000014 4A000005        BMI              JUMP        ;if the number is n
+                                                            egetive move to jum
+                                                            p instruction
+   10 00000018 E0822001        ADD              R2,R1       ;if not equal to 0 
+                                                            add r2 and r1 and s
+                                                            tore in r5
+   11 0000001C E2800004        ADD              R0,#4       ;incrementing the a
+                                                            ddress in R0 to get
+                                                             the next element f
+                                                            rom the array
+   12 00000020 E2444001        ADD              R4,#-1      ;decrementing r4 wh
+                                                            ich is the counter 
+                                                            value
+   13 00000024 E3540000        CMP              R4,#0       ;again check if R4 
+                                                            is 0 or not if yes 
+                                                            set 0 flag to high
+   14 00000028 0A000003        BEQ              DONE        ;if not 0 jump to d
+                                                            one
+   15 0000002C EAFFFFF6        B                LOOP        ;else go to loop
+   16 00000030 E2800004 
+                       JUMP    ADD              R0,#4       ;incrementing r1
+   17 00000034 E2444001        ADD              R4,#-1      ;decrementing r4 co
+                                                            unter
+   18 00000038 EAFFFFF3        B                LOOP        ;branch to loop
+   19 0000003C E59F300C 
+                       DONE    LDR              R3,RESULT   ;laoding address to
+                                                             store result
+   20 00000040 E5832000        STR              R2,[R3]     ;storing result
+   21 00000044 EAFFFFFE 
+                       STOP    B                STOP        ;
+   22 00000048 40000004 
+                       VALUE   DCD              0X40000004  ;
+   23 0000004C 40000000 
+                       COUNT   DCD              0X40000000  ;
+   24 00000050 4000002C 
+                       RESULT  DCD              0X4000002C  ;
+   25 00000054                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\question2.d -o.\objects\question2.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_
+v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION
+ SETA 525" --list=.\listings\question2.lst QUESTION2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+COUNT 0000004C
+
+Symbol: COUNT
+   Definitions
+      At line 23 in file QUESTION2.s
+   Uses
+      At line 5 in file QUESTION2.s
+Comment: COUNT used once
+DONE 0000003C
+
+Symbol: DONE
+   Definitions
+      At line 19 in file QUESTION2.s
+   Uses
+      At line 14 in file QUESTION2.s
+Comment: DONE used once
+JUMP 00000030
+
+Symbol: JUMP
+   Definitions
+      At line 16 in file QUESTION2.s
+   Uses
+      At line 9 in file QUESTION2.s
+Comment: JUMP used once
+LOOP 0000000C
+
+Symbol: LOOP
+   Definitions
+      At line 7 in file QUESTION2.s
+   Uses
+      At line 15 in file QUESTION2.s
+      At line 18 in file QUESTION2.s
+
+MAIN 00000000
+
+Symbol: MAIN
+   Definitions
+      At line 3 in file QUESTION2.s
+   Uses
+      None
+Comment: MAIN unused
+PROGRAM 00000000
+
+Symbol: PROGRAM
+   Definitions
+      At line 1 in file QUESTION2.s
+   Uses
+      None
+Comment: PROGRAM unused
+RESULT 00000050
+
+Symbol: RESULT
+   Definitions
+      At line 24 in file QUESTION2.s
+   Uses
+      At line 19 in file QUESTION2.s
+Comment: RESULT used once
+STOP 00000044
+
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+Symbol: STOP
+   Definitions
+      At line 21 in file QUESTION2.s
+   Uses
+      At line 21 in file QUESTION2.s
+Comment: STOP used once
+VALUE 00000048
+
+Symbol: VALUE
+   Definitions
+      At line 22 in file QUESTION2.s
+   Uses
+      At line 4 in file QUESTION2.s
+Comment: VALUE used once
+9 symbols
+341 symbols in table

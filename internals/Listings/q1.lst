@@ -1,0 +1,66 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             PROGRAM,CODE,READONLY
+    2 00000000                 ENTRY
+    3 00000000         MAIN
+    4 00000000 E59F1018        LDR              R1,VALUE
+    5 00000004 E5912000        LDR              R2,[R1]
+    6 00000008 E202300F        AND              R3,R2,#0X0000000F
+    7 0000000C E202480F        AND              R4,R2,#0X000F0000
+    8 00000010 E1A04824        MOV              R4,R4,LSR #0X10
+    9 00000014 E0835004        ADD              R5,R3,R4
+   10 00000018 E59F6004        LDR              R6,RESULT
+   11 0000001C E5865000        STR              R5,[R6]
+   12 00000020 40000004 
+                       VALUE   DCD              &40000004
+   13 00000024 4000000C 
+                       RESULT  DCD              &4000000C
+   14 00000028                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\q1.d -o.\objects\q1.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\I
+nclude --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 525" --l
+ist=.\listings\q1.lst q1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MAIN 00000000
+
+Symbol: MAIN
+   Definitions
+      At line 3 in file q1.s
+   Uses
+      None
+Comment: MAIN unused
+PROGRAM 00000000
+
+Symbol: PROGRAM
+   Definitions
+      At line 1 in file q1.s
+   Uses
+      None
+Comment: PROGRAM unused
+RESULT 00000024
+
+Symbol: RESULT
+   Definitions
+      At line 13 in file q1.s
+   Uses
+      At line 10 in file q1.s
+Comment: RESULT used once
+VALUE 00000020
+
+Symbol: VALUE
+   Definitions
+      At line 12 in file q1.s
+   Uses
+      At line 4 in file q1.s
+Comment: VALUE used once
+4 symbols
+336 symbols in table
